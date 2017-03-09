@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.yangxc.materialtest.MainActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:popupTheme="@style/Theme.AppCompat.Light" />
+        </android.support.design.widget.AppBarLayout>
+        <!--app:layout_scrollFlags="scroll|enterAlways|snap"
+             scroll 表示 recyclerView 向上滚动 toolbar 隐藏； enterAlways 表示向下 显示；
+              snap 表示 toolbar 还没完全隐藏或显示的时候，会根据当前滚动距离，自动选择显示或隐藏-->
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcl_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"  有design 包提供的，指定一个布局行为-->
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="15dp"
+            android:elevation="20dp"
+            android:src="@mipmap/nvsheng" />
+        <!-- elevation 指定高度值，值越大，投影范围大，阴影浓度淡； 值越小，则相反-->
+
+
+    </android.support.design.widget.CoordinatorLayout>
+    <!--drawerlayout 里不能包裹两个视图-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/test_tv"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="start"-->
+    <!--android:background="#fff"-->
+    <!--android:text="this is menu."-->
+    <!--android:textSize="20sp"-->
+    <!--android:visibility="gone" />-->
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/resource_file" />
+</android.support.v4.widget.DrawerLayout>
